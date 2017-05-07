@@ -63,7 +63,6 @@ namespace Vote.API
                 {
                     HostName = settings.EventBusConnection
                 };
-
                 return new DefaultRabbitMQPersistentConnection(factory, logger);
             });
 
