@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  vote.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5103
+      - RedisHost=vote.data
+      - RedisPort=6379
+      - EventBusConnection=rabbitmq
+    ports:
+      - "5103:5103"

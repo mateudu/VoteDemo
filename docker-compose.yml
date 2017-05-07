@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  vote.api:
+    image: vote.api
+    build:
+      context: ./Vote.API
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+      - vote.data
+    links:
+      - rabbitmq
+      - vote.data
+    
+  vote.data:
+    image: redis
+    environment:
+      LOCAL_REDIS: "true"
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
