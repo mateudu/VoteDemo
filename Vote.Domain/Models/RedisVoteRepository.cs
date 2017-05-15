@@ -57,7 +57,7 @@ namespace Vote.Domain.Models
                 var obj = JsonConvert.DeserializeObject<Election>(str);
                 elections.Add(obj);
             });
-            return elections;
+            return elections.OrderBy(x=>x.Id);
         }
 
         public async Task<Election> AddElection(string electionName)
@@ -97,7 +97,7 @@ namespace Vote.Domain.Models
                 var obj = JsonConvert.DeserializeObject<VoteOption>(str);
                 voteOptions.Add(obj);
             });
-            return voteOptions;
+            return voteOptions.OrderBy(x => x.Id);
         }
     }
 }
